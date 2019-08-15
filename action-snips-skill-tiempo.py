@@ -141,7 +141,6 @@ def pred_viento(hoy):
 def intent_received(hermes, intentMessage):
 
     if intentMessage.intent.intent_name == 'gemalb:GetWeather':
-        print('Intent {}'.format(intentMessage))
         try:
             clima = intentMessage.slots.ClimeType.first().value
         except TypeError:
@@ -155,8 +154,8 @@ def intent_received(hermes, intentMessage):
             pass
 
         if intentMessage.slots.TimeType:
-            tmp = intentMessage.slots.Fecha[0].slot_value.value
-            fr_fecha = intentMessage.slots.Fecha[0].raw_value
+            tmp = intentMessage.slots.TimeType[0].slot_value.value
+            fr_fecha = intentMessage.slots.TimeType[0].raw_value
 
         try:
             if isinstance(tmp, hermes_python.ontology.dialogue.InstantTimeValue):
